@@ -12,20 +12,15 @@ class LandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(child: Text("ff"));
-
-/*       return BlocProvider(create: create)
- */
-
-    /*  return FlowBuilder<AuthState>(
+    return FlowBuilder<AuthState>(
       state: context.select((AuthCubit cubit) => cubit.state),
       onGeneratePages: (authState, pages) {
         if (authState.isSignedIn) {
-         return context.pushRoute(const HomeRoute());
+          return [HomePage.page()];
         } else {
-          return 
+          return [HomePage.page()];
         }
       },
-    ); */
+    );
   }
 }

@@ -1,3 +1,5 @@
+import 'package:app_peritos/features/authentication/data/data.dart';
+import 'package:app_peritos/features/authentication/domain/entities/auth.dart';
 import 'package:app_peritos/features/authentication/domain/entities/user.dart';
 import 'package:app_peritos/core/error/failures.dart';
 import 'package:app_peritos/features/authentication/domain/repositories/auth_repository.dart';
@@ -6,10 +8,15 @@ import 'package:injectable/injectable.dart';
 
 @Injectable(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
+  final AuthRemoteSource _authRemoteSource;
+
+  AuthRepositoryImpl(this._authRemoteSource);
+
   @override
-  Future<Either<Failure, void>> signIn() {
-    // TODO: implement signIn
-    throw UnimplementedError();
+  Future<AuthResponse> signIn(String username, String password) async {
+    final response = await _authRemoteSource.signIn(username, password);
+    return response.map((auth) => auth.toEntity());
+    /* return response.map((Auth) => albums.toEntities()); */
   }
 
   @override

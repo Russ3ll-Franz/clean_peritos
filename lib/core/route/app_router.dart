@@ -12,7 +12,7 @@ class AppRouteObserver extends AutoRouterObserver {
 @MaterialAutoRouter(replaceInRouteName: 'Page,Route', routes: <AutoRoute>[
   AutoRoute(page: LandingPage, initial: true),
   homeRouter
-  /* homeRouter,
+  /* ,
   signInRouter,
   inspeccionRouter */
 ])
